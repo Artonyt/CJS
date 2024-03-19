@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+:root {
+    --color-barra-lateral: rgb(255, 255, 255);
+    --color-texto: rgb(0, 0, 0);
+    /* Otros variables personalizables aquí */
+}
+
+/* Estilos para el body */
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/bg.jpg) no-repeat center top;
+    background-size: cover;
+    font-family: 'Outfit', sans-serif; /* Cambié la fuente del cuerpo */
+    height: 100vh;
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.login-box {
+    width: 90%; /* Cambio el ancho del formulario para que sea responsive */
+    max-width: 320px; /* Establezco un ancho máximo para mantener el diseño en dispositivos grandes */
+    height: 550px;
+    background: #510e7e;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 100px 30px;
+    border-radius: 10px; /* Agregué bordes redondeados para el formulario */
+}
+
+/* Estilos para el avatar */
+.login-box .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: calc(50% - 50px);
+}
+
+/* Estilos para el título */
+.login-box h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+/* Estilos para las etiquetas */
+.login-box label {
+    margin: 2;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+
+/* Estilos para los inputs */
+.login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* Estilos para el botón de enviar */
+.login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #b80f22;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer; /* Cambié el cursor al pasar el ratón para indicar que es un botón */
+}
+
+/* Estilos para el botón de enviar al pasar el ratón */
+.login-box input[type="submit"]:hover {
+    background: #ffc107;
+    color: #000;
+}
+
+/* Estilos para los enlaces */
+.login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+/* Estilos para los enlaces al pasar el ratón */
+.login-box a:hover {
+    color: #fff;
+}
+
+/* Estilos para el mensaje de error */
+.error-message {
+    color: rgb(252, 0, 0);
+}
+
+/* Media Query para dispositivos con un ancho máximo de 600px */
+@media (max-width: 600px) {
+    .login-box {
+        padding: 80px 15px; /* Reduzco el relleno para dispositivos más pequeños */
+    }
+}
+
+/* Estilos para las alertas */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-dismissable {
+    position: relative;
+    padding-right: 35px;
+    color: #721c24;
+}
