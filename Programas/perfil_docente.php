@@ -55,31 +55,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li>
                     <a id="inbox" href="Perfil.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
-                        <span>Perfil</span>
+                        <span>PERFIL</span>
                     </a>
                 </li>
                 <li>
                     <a href="Asignaturas.php">
                         <ion-icon name="star-outline"></ion-icon>
-                        <span>Asignaturas</span>
+                        <span>ASIGNATURAS</span>
                     </a>
                 </li>
                 <li>
                     <a href="Asistencias.php">
                         <ion-icon name="paper-plane-outline"></ion-icon>
-                        <span>Asistencias</span>
+                        <span>ASISTENCIAS</span>
                     </a>
                 </li>
                 <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
-                        <span>Notas</span>
+                        <span>NOTAS</span>
                     </a>
                 </li>
                 <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
-                        <span>Cursos</span>
+                        <span>CURSOS</span>
                     </a>
                 </li>
             </ul>
