@@ -15,7 +15,7 @@ $apellidoUsuario=$row['APELLIDOS'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CJS</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="menu">
@@ -35,45 +35,33 @@ $apellidoUsuario=$row['APELLIDOS'];
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="Perfil.html">
+                    <a id="inbox" href="Perfil.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
                         <span>Perfil</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Asignaturas.html">
+                    <a href="Asignaturas.php">
                         <ion-icon name="star-outline"></ion-icon>
                         <span>Asignaturas</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Asistencias.html">
+                    <a href="Asistencias.php">
                         <ion-icon name="paper-plane-outline"></ion-icon>
                         <span>Asistencias</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Notas.html">
+                    <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
                         <span>Notas</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <ion-icon name="bookmark-outline"></ion-icon>
-                        <span>Important</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <ion-icon name="alert-circle-outline"></ion-icon>
-                        <span>Spam</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <ion-icon name="trash-outline"></ion-icon>
-                        <span>Trash</span>
+                    <a href="Notas.php">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Cursos</span>
                     </a>
                 </li>
             </ul>

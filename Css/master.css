@@ -10,7 +10,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(../img/bg.jpg) no-repeat center top;
+    background: url(../Imagenes/fondo.jpg) no-repeat center top;
     background-size: cover;
     font-family: 'Outfit', sans-serif; /* Cambié la fuente del cuerpo */
     height: 100vh;
