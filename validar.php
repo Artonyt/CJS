@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error = "Usuario o contraseña incorrectos"; // Asignar el mensaje de error
     }
-    
+
     mysqli_close($conexion);
 }
 ?>

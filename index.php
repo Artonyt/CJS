@@ -10,7 +10,7 @@
 <div class="login-box">
   <img src="img/logo.png" class="avatar" alt="Avatar Image">
   <h1>Iniciar Sesión</h1>
-  <?php  
+  <?php
   if (!empty($_GET['alerta'])) {
       if ($_GET['alerta'] == 1) {
           echo "<div class='alert alert-danger alert-dismissable'>
@@ -33,16 +33,15 @@
       <input type="text" id="usuario" name="usuario" placeholder="Identificación">
       <div id="usuario-error" class="error-message"></div>
     </div>
-    
+
     <div>
       <label for="password">Contraseña</label>
       <input type="password" id="password" name="password" placeholder="Contraseña">
       <div id="password-error" class="error-message"></div>
     </div>
-    
+
     <input type="submit" value="Ingresar">
     <a href="recuperar_contrasena.php">¿Olvidó su contraseña?</a><br>
-    <a href="registro.php">Registrarse</a>
   </form>
 </div>
 
