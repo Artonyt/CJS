@@ -34,7 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: Programas/perfil_docente.php");
         exit();
     } else {
-        $error = "Usuario o contraseña incorrectos"; // Asignar el mensaje de error
+        $error = "Usuario o contraseña incorrectos";
+        $_SESSION["error"] = $error; // Almacenar el mensaje de error en la sesión
+        header("Location: index.php");
+        exit();
     }
 
     mysqli_close($conexion);

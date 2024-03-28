@@ -10,23 +10,20 @@
 <div class="login-box">
   <img src="img/logo.png" class="avatar" alt="Avatar Image">
   <h1>Iniciar Sesión</h1>
+
   <?php
-  if (!empty($_GET['alerta'])) {
-      if ($_GET['alerta'] == 1) {
-          echo "<div class='alert alert-danger alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <h4><i class='icon fa fa-times-circle'></i> ¡Error al ingresar!</h4>
-                Documento o clave incorrectos. Por favor, verifique e intente nuevamente.
-                </div>";
-      } elseif ($_GET['alerta'] == 2) {
-          echo "<div class='alert alert-success alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <h4><i class='icon fa fa-check-circle'></i> ¡Éxito!</h4>
-                ¡Ha cerrado sesión exitosamente!
-                </div>";
-      }
+  session_start();
+
+  // Verificar si hay un mensaje de error en la sesión
+  if (isset($_SESSION["error"])) {
+      $error = $_SESSION["error"];
+      // Mostrar el mensaje de error
+      echo '<p style="color: red;">' . $error . '</p>';
+      // Limpiar la sesión del mensaje de error para evitar que se muestre de nuevo después de una recarga de la página
+      unset($_SESSION["error"]);
   }
-  ?>
+  ?> 
+
   <form id="login-form" action="validar.php" method="post">
     <div>
       <label for="usuario">Documento</label>
