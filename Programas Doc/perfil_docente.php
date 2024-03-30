@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="Perfil.php">
+                    <a id="inbox" href="perfil_docente.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
                         <span>PERFIL</span>
                     </a>

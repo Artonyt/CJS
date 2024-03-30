@@ -1,4 +1,8 @@
-
+https://code.jquery.com/jquery-3.7.1.js
+https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js
+https://cdn.datatables.net/2.0.3/js/dataTables.js
+https://cdn.datatables.net/2.0.3/js/dataTables.semanticui.js
+https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js
 const cloud = document.getElementById("cloud");
 const barraLateral = document.querySelector(".barra-lateral");
 const spans = document.querySelectorAll("span");

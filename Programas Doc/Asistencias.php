@@ -24,33 +24,33 @@
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="Perfil.php">
+                    <a id="inbox" href="perfil_docente.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
-                        <span>Perfil</span>
+                        <span>PERFIL</span>
                     </a>
                 </li>
                 <li>
                     <a href="Asignaturas.php">
                         <ion-icon name="star-outline"></ion-icon>
-                        <span>Asignaturas</span>
+                        <span>ASIGNATURAS</span>
                     </a>
                 </li>
                 <li>
                     <a href="Asistencias.php">
                         <ion-icon name="paper-plane-outline"></ion-icon>
-                        <span>Asistencias</span>
+                        <span>ASISTENCIAS</span>
                     </a>
                 </li>
                 <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
-                        <span>Notas</span>
+                        <span>NOTAS</span>
                     </a>
                 </li>
                 <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
-                        <span>Cursos</span>
+                        <span>CURSOS</span>
                     </a>
                 </li>
             </ul>
@@ -89,8 +89,10 @@
 
 
     <main>
-        <h1>Asignaturas</h1>
-        
+        <h1>Asistencia</h1>
+        <span class="nav_image">
+            <img src="../Imagenes/profile.jpg"logo_img" width="15%" />
+          </span>
         <div class="container">
             <table>
                 <thead>

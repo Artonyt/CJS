@@ -1,12 +1,30 @@
 <?php
 session_start();
-$nombre = $_SESSION["usuario"];
-include("conexion.php");
-$consultaUsuario="SELECT * FROM usuario where '$nombre' = DOCUMENTO";
-$resultado=mysqli_query($link,$consultaUsuario); 
-$row=(mysqli_fetch_assoc($resultado));
-$nombreUsuario=$row['NOMBRES'];
-$apellidoUsuario=$row['APELLIDOS'];
+
+// Verificar si se ha enviado un formulario de inicio de sesión
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST["usuario"];
+    $password = $_POST["password"];
+
+    // Establecer conexión a la base de datos
+    include("conexion.php"); // Asegúrate de que la ruta sea correcta
+
+    // Consultar tabla de docentes
+    $consultaDocente = "SELECT * FROM docente WHERE identificacion = '$usuario' AND contraseña = '$password'";
+    $resultadoDocente = mysqli_query($link, $consultaDocente);
+
+    // Verificar si se encontró el docente
+    if (mysqli_num_rows($resultadoDocente) > 0) {
+        // Obtener los datos del docente
+        $row = mysqli_fetch_assoc($resultadoDocente);
+        $nombreDocente = $row['identificacion'];
+        // Agrega aquí los otros campos que desees mostrar
+    } else {
+        $error = "Usuario o contraseña incorrectos"; // Asignar el mensaje de error
+    }
+
+    mysqli_close($link); // Cerrar la conexión a la base de datos
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +53,7 @@ $apellidoUsuario=$row['APELLIDOS'];
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="Perfil.php">
+                    <a id="inbox" href="perfil_estudiante.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
                         <span>Perfil</span>
                     </a>
@@ -66,7 +84,6 @@ $apellidoUsuario=$row['APELLIDOS'];
                 </li>
             </ul>
         </nav>
-
         <div>
             <div class="linea"></div>
 

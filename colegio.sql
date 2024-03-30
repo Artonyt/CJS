@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-02-2024 a las 19:33:36
+-- Tiempo de generación: 30-03-2024 a las 21:05:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,6 +33,17 @@ CREATE TABLE `asignatura` (
   `ID_materia` int(11) DEFAULT NULL,
   `Docente_asignado` varchar(100) DEFAULT NULL,
   `Horario_clase` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignatura_materia`
+--
+
+CREATE TABLE `asignatura_materia` (
+  `ID_asignatura` int(11) NOT NULL,
+  `ID_materia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -240,6 +251,13 @@ ALTER TABLE `asignatura`
   ADD KEY `ID_materia` (`ID_materia`);
 
 --
+-- Indices de la tabla `asignatura_materia`
+--
+ALTER TABLE `asignatura_materia`
+  ADD PRIMARY KEY (`ID_asignatura`,`ID_materia`),
+  ADD KEY `ID_materia` (`ID_materia`);
+
+--
 -- Indices de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
@@ -305,6 +323,13 @@ ALTER TABLE `rol`
 --
 ALTER TABLE `asignatura`
   ADD CONSTRAINT `asignatura_ibfk_1` FOREIGN KEY (`ID_materia`) REFERENCES `materia` (`ID_materia`);
+
+--
+-- Filtros para la tabla `asignatura_materia`
+--
+ALTER TABLE `asignatura_materia`
+  ADD CONSTRAINT `asignatura_materia_ibfk_1` FOREIGN KEY (`ID_asignatura`) REFERENCES `asignatura` (`ID_asignatura`),
+  ADD CONSTRAINT `asignatura_materia_ibfk_2` FOREIGN KEY (`ID_materia`) REFERENCES `materia` (`ID_materia`);
 
 --
 -- Filtros para la tabla `asistencia`

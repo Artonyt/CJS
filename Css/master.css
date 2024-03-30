@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
-
+https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css
+https://cdn.datatables.net/2.0.3/css/dataTables.semanticui.css
 :root {
     --color-barra-lateral: rgb(255, 255, 255);
     --color-texto: rgb(0, 0, 0);
@@ -10,8 +11,9 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(../Imagenes/fondo.jpg) no-repeat center top;
-    background-size: cover;
+    background-image: url('../Imagenes/fondo.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* La imagen cubrirá todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
     font-family: 'Outfit', sans-serif; /* Cambié la fuente del cuerpo */
     height: 100vh;
 }
