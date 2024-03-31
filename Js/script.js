@@ -1,8 +1,3 @@
-https://code.jquery.com/jquery-3.7.1.js
-https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js
-https://cdn.datatables.net/2.0.3/js/dataTables.js
-https://cdn.datatables.net/2.0.3/js/dataTables.semanticui.js
-https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js
 const cloud = document.getElementById("cloud");
 const barraLateral = document.querySelector(".barra-lateral");
 const spans = document.querySelectorAll("span");
@@ -10,37 +5,38 @@ const palanca = document.querySelector(".switch");
 const circulo = document.querySelector(".circulo");
 const menu = document.querySelector(".menu");
 const main = document.querySelector("main");
+const cerrarSesionBtn = document.getElementById("cerrar-sesion-btn");
 
-menu.addEventListener("click",()=>{
+menu.addEventListener("click", () => {
     barraLateral.classList.toggle("max-barra-lateral");
-    if(barraLateral.classList.contains("max-barra-lateral")){
+    if (barraLateral.classList.contains("max-barra-lateral")) {
         menu.children[0].style.display = "none";
         menu.children[1].style.display = "block";
-    }
-    else{
+    } else {
         menu.children[0].style.display = "block";
         menu.children[1].style.display = "none";
     }
-    if(window.innerWidth<=320){
+    if (window.innerWidth <= 320) {
         barraLateral.classList.add("mini-barra-lateral");
         main.classList.add("min-main");
-        spans.forEach((span)=>{
+        spans.forEach((span) => {
             span.classList.add("oculto");
-        })
+        });
     }
 });
 
-palanca.addEventListener("click",()=>{
+palanca.addEventListener("click", () => {
     let body = document.body;
     body.classList.toggle("dark-mode");
     body.classList.toggle("");
     circulo.classList.toggle("prendido");
 });
 
-cloud.addEventListener("click",()=>{
+cloud.addEventListener("click", () => {
     barraLateral.classList.toggle("mini-barra-lateral");
     main.classList.toggle("min-main");
-    spans.forEach((span)=>{
+    spans.forEach((span) => {
         span.classList.toggle("oculto");
     });
 });
+

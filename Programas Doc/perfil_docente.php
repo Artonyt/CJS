@@ -45,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="nombre-pagina">
                 <img src="../Imagenes/logo (2).png" alt="" width="30%">
+                <a href="perfil_docente.php"></a>
                 <span>CJS</span>
             </div>
-           
         </div>
 
         <nav class="navegacion">
@@ -55,42 +55,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li>
                     <a id="inbox" href="perfil_docente.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
-                        <span>PERFIL</span>
+                        <span>Perfil</span>
                     </a>
                 </li>
                 <li>
                     <a href="Asignaturas.php">
                         <ion-icon name="star-outline"></ion-icon>
-                        <span>ASIGNATURAS</span>
+                        <span>Asignaturas</span>
                     </a>
                 </li>
                 <li>
                     <a href="Asistencias.php">
                         <ion-icon name="paper-plane-outline"></ion-icon>
-                        <span>ASISTENCIAS</span>
+                        <span>Asistencias</span>
                     </a>
                 </li>
                 <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
-                        <span>NOTAS</span>
+                        <span>Notas</span>
                     </a>
                 </li>
                 <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
-                        <span>CURSOS</span>
+                        <span>Cursos</span>
                     </a>
                 </li>
             </ul>
         </nav>
+
         <div>
             <div class="linea"></div>
 
             <div class="modo-oscuro">
                 <div class="info">
                     <ion-icon name="moon-outline"></ion-icon>
-                    <span>Drak Mode</span>
+                    <span>Modo Oscuro </span>
                 </div>
                 <div class="switch">
                     <div class="base">
@@ -116,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 
-    <main>
+<main>
         <h1>Perfil</h1>
         <span class="nav_image">
             <img src="../Imagenes/profile.jpg"logo_img" width="15%" />
@@ -142,6 +143,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
