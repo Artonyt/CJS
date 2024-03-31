@@ -13,13 +13,13 @@
     </div>
 
     <div class="barra-lateral">
-        <div>
-            <div class="nombre-pagina">
-                <img src="../Imagenes/logo (2).png" alt="" width="30%">
-                <a href="perfil_docente.php"></a>
-                <span>CJS</span>
-            </div>
+    <div>
+        <a href="perfil_docente.php">
+        <div class="nombre-pagina">
+            <img src="../Imagenes/logo (2).png" alt="" width="40%">
         </div>
+        </a>  
+    </div>
 
         <nav class="navegacion">
             <ul>

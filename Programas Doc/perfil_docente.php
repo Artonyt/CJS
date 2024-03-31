@@ -42,13 +42,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="barra-lateral">
-        <div>
+    <div>
+        <a href="">
             <div class="nombre-pagina">
-                <img src="../Imagenes/logo (2).png" alt="" width="30%">
-                <a href="perfil_docente.php"></a>
-                <span>CJS</span>
+                <img src="../Imagenes/logo (2).png" alt="" width="40%">
             </div>
-        </div>
+        </a>  
+    </div>
 
         <nav class="navegacion">
             <ul>
