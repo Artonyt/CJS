@@ -24,7 +24,7 @@
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="Perfil.php">
+                    <a id="inbox" href="Perfil_estudiante.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
                         <span>Perfil</span>
                     </a>

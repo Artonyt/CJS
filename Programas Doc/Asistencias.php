@@ -16,15 +16,15 @@
         <div>
             <div class="nombre-pagina">
                 <img src="../Imagenes/logo (2).png" alt="" width="30%">
+                <a href="perfil_docente.php"></a>
                 <span>CJS</span>
             </div>
-           
         </div>
 
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="Perfil.php">
+                    <a id="inbox" href="perfil_docente.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
                         <span>Perfil</span>
                     </a>
@@ -62,7 +62,7 @@
             <div class="modo-oscuro">
                 <div class="info">
                     <ion-icon name="moon-outline"></ion-icon>
-                    <span>Drak Mode</span>
+                    <span>Modo Oscuro </span>
                 </div>
                 <div class="switch">
                     <div class="base">
@@ -88,7 +88,7 @@
     </div>
 
 
-    <main>
+<main>
         <h1>Asistencia</h1>
         <span class="nav_image">
             <img src="../Imagenes/profile.jpg"logo_img" width="15%" />
@@ -190,6 +190,5 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="/script.js"></script>
-</body>
+    <script src="../js/script.js"></script>
 </html>
