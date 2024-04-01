@@ -56,6 +56,69 @@ body {
     font-family: 'Outfit', sans-serif; /* Cambié la fuente del cuerpo */
     height: 100vh;
 }
+/* Estilos para el contenedor de los botones superiores */
+.top-buttons {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones en la parte superior derecha */
+    margin-bottom: 20px; /* Agrega un espacio entre los botones y la tabla */
+}
+
+/* Estilos para el botón "Cerrar Sesión" */
+.logout-button {
+    padding: 8px 16px;
+    margin-left: 10px; /* Agrega un espacio entre los botones */
+    border: none;
+    border-radius: 5px;
+    background-color: #ff1100;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #e53935;
+}
+
+/* Estilos para el botón "Agregar Materia" */
+.add-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #a200ff;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #c2c3c7;
+}
+
+/* Estilos para los botones de acciones "Editar" y "Eliminar" */
+.button-container {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #a200ff;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #c2c3c7;
+}
+
 
 /*-----------------Menu*/
 .menu{
@@ -333,7 +396,7 @@ main.min-main{
 }
 .container {
     size: 100%;
-    border: solid 1px rgba(255, 255, 255, 0.3);
+    border: solid px rgba(255, 255, 255, 0.3);
     margin-left: 0%;
     margin-top: 6%;
     margin-right: 4%;
@@ -345,7 +408,7 @@ main.min-main{
     width: 100%;
     height: 80%;
     color: black;
-    font-size: 20px;
+    font-size: 25px;
     table-layout: fixed;
     border-collapse: separate;
     border-radius: 10px;
@@ -382,3 +445,5 @@ main.min-main{
     background: rgba(243, 103, 199, 0.4);
     border-radius: 10px;
   }
+
+
