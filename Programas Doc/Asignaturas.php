@@ -26,24 +26,27 @@
     <link rel="icon" href="../imagenes/favicon.ico" type="image/vnd.microsoft.icon">
 </head>
 <body>
+
     <div class="menu">
         <ion-icon name="menu-outline"></ion-icon>
         <ion-icon name="close-outline"></ion-icon>
     </div>
 
     <div class="barra-lateral">
+    <div id="cloud">
         <div>
             <div class="nombre-pagina">
-                <img src="../Imagenes/logo (2).png" alt="" width="30%">
+                <img src="../Imagenes/favicon.ico" alt="" width="30%">
                 <span>CJS</span>
             </div>
         </div>
+    </div>
 
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="perfil_docente.php">
-                        <ion-icon name="mail-unread-outline"></ion-icon>
+                    <a href="perfil_docente.php">
+                    <ion-icon name="person-outline"></ion-icon>
                         <span>Perfil</span>
                     </a>
                 </li>
@@ -80,11 +83,13 @@
             <div class="modo-oscuro">
                 <div class="info">
                     <ion-icon name="moon-outline"></ion-icon>
-                    <span>Modo Oscuro </span>
+                    <span>Modo Oscuro</span>
                 </div>
                 <div class="switch">
                     <div class="base">
-                        <div class="circulo"></div>
+                        <div class="circulo">
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -148,6 +153,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/script.js"></script> 
+    
 </body>
 </html>

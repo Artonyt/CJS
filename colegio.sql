@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-03-2024 a las 21:05:40
+-- Tiempo de generación: 01-04-2024 a las 20:35:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,20 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `asignatura` (
   `ID_asignatura` int(11) NOT NULL,
   `Nombre_asignatura` varchar(100) DEFAULT NULL,
-  `ID_materia` int(11) DEFAULT NULL,
   `Docente_asignado` varchar(100) DEFAULT NULL,
   `Horario_clase` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `asignatura_materia`
---
-
-CREATE TABLE `asignatura_materia` (
-  `ID_asignatura` int(11) NOT NULL,
-  `ID_materia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91,7 +79,10 @@ INSERT INTO `curso` (`ID_curso`, `Nombre_curso`, `ID_grado`) VALUES
 CREATE TABLE `docente` (
   `ID_profesor` int(11) NOT NULL,
   `Nombre` varchar(100) DEFAULT NULL,
-  `identificacion` int(11) NOT NULL,
+  `Apellido` varchar(100) NOT NULL,
+  `Identificacion` int(11) NOT NULL,
+  `Direccion` varchar(80) NOT NULL,
+  `Celular` varchar(20) NOT NULL,
   `Correo_electrónico` varchar(100) DEFAULT NULL,
   `Contraseña` varchar(20) NOT NULL,
   `ID_rol` int(11) DEFAULT NULL
@@ -101,8 +92,9 @@ CREATE TABLE `docente` (
 -- Volcado de datos para la tabla `docente`
 --
 
-INSERT INTO `docente` (`ID_profesor`, `Nombre`, `identificacion`, `Correo_electrónico`, `Contraseña`, `ID_rol`) VALUES
-(1, 'Fernando', 1000678165, 'kaka@gmail.com', 'Ditunombre1', 1);
+INSERT INTO `docente` (`ID_profesor`, `Nombre`, `Apellido`, `Identificacion`, `Direccion`, `Celular`, `Correo_electrónico`, `Contraseña`, `ID_rol`) VALUES
+(1, 'Fernando', 'Ortiz', 1000678165, 'cra 58 # 34 56 su', '300331452', 'kaka@gmail.com', 'Ditunombre1', 1),
+(2, 'pepe', 'fernandez', 100031209, 'cra 745 b 48953 suir', '3003371492', 'dasdadadapdaksojfduakj@gmail.com', 'Ditunombre1', 1);
 
 -- --------------------------------------------------------
 
@@ -169,40 +161,39 @@ INSERT INTO `grado` (`ID_grado`, `Nombre_grado`) VALUES
 
 CREATE TABLE `materia` (
   `ID_materia` int(11) NOT NULL,
-  `Nombre_materia` varchar(100) DEFAULT NULL
+  `Nombre_materia` varchar(100) DEFAULT NULL,
+  `id_asignatura` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `materia`
 --
 
-INSERT INTO `materia` (`ID_materia`, `Nombre_materia`) VALUES
-(1, 'Etica'),
-(2, 'Religion'),
-(3, 'Español'),
-(4, 'Educacionn Fisica'),
-(5, 'Informatica'),
-(6, 'Artes'),
-(7, 'Ingles'),
-(8, 'Matematicas'),
-(9, 'Ciencias'),
-(10, 'Sociales'),
-(11, 'Estadistica'),
-(12, 'Geometria'),
-(13, 'Quimica'),
-(14, 'Fisica'),
-(15, 'Democracia'),
-(16, 'Geografia'),
-(17, 'Historia'),
-(18, 'Catedra de la paz'),
-(19, 'Trigonometria'),
-(20, 'Filosofia'),
-(21, 'Politica'),
-(22, 'Economia'),
-(23, 'Algebra'),
-(24, 'Estadistica'),
-(25, 'Danzas'),
-(26, '');
+INSERT INTO `materia` (`ID_materia`, `Nombre_materia`, `id_asignatura`) VALUES
+(0, 'Religion', 0),
+(3, 'Español', 0),
+(4, 'Educacion Fisica', 0),
+(5, 'Informatica', 0),
+(6, 'Artes', 0),
+(7, 'Ingles', 0),
+(8, 'Matematicas', 0),
+(9, 'Ciencias', 0),
+(10, 'Sociales', 0),
+(11, 'Estadistica', 0),
+(12, 'Geometria', 0),
+(13, 'Quimica', 0),
+(14, 'Fisica', 0),
+(15, 'Democracia', 0),
+(16, 'Geografia', 0),
+(17, 'Historia', 0),
+(18, 'Catedra de la paz', 0),
+(19, 'Trigonometria', 0),
+(20, 'Filosofia', 0),
+(21, 'Politica', 0),
+(22, 'Economia', 0),
+(23, 'Algebra', 0),
+(24, 'Estadistica', 0),
+(25, 'Danzas', 0);
 
 -- --------------------------------------------------------
 
@@ -247,15 +238,7 @@ INSERT INTO `rol` (`ID_rol`, `Nombre_rol`) VALUES
 -- Indices de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  ADD PRIMARY KEY (`ID_asignatura`),
-  ADD KEY `ID_materia` (`ID_materia`);
-
---
--- Indices de la tabla `asignatura_materia`
---
-ALTER TABLE `asignatura_materia`
-  ADD PRIMARY KEY (`ID_asignatura`,`ID_materia`),
-  ADD KEY `ID_materia` (`ID_materia`);
+  ADD PRIMARY KEY (`ID_asignatura`);
 
 --
 -- Indices de la tabla `asistencia`
@@ -298,7 +281,8 @@ ALTER TABLE `grado`
 -- Indices de la tabla `materia`
 --
 ALTER TABLE `materia`
-  ADD PRIMARY KEY (`ID_materia`);
+  ADD PRIMARY KEY (`ID_materia`),
+  ADD KEY `id_asignatura` (`id_asignatura`);
 
 --
 -- Indices de la tabla `nota`
@@ -322,14 +306,7 @@ ALTER TABLE `rol`
 -- Filtros para la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  ADD CONSTRAINT `asignatura_ibfk_1` FOREIGN KEY (`ID_materia`) REFERENCES `materia` (`ID_materia`);
-
---
--- Filtros para la tabla `asignatura_materia`
---
-ALTER TABLE `asignatura_materia`
-  ADD CONSTRAINT `asignatura_materia_ibfk_1` FOREIGN KEY (`ID_asignatura`) REFERENCES `asignatura` (`ID_asignatura`),
-  ADD CONSTRAINT `asignatura_materia_ibfk_2` FOREIGN KEY (`ID_materia`) REFERENCES `materia` (`ID_materia`);
+  ADD CONSTRAINT `asignatura_ibfk_1` FOREIGN KEY (`ID_asignatura`) REFERENCES `materia` (`id_asignatura`);
 
 --
 -- Filtros para la tabla `asistencia`

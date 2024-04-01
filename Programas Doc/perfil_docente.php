@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // Verificar si se ha enviado un formulario de inicio de sesión
@@ -7,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Establecer conexión a la base de datos
-    include("conexion.php"); // Asegúrate de que la ruta sea correcta
+    include("./conexion.php"); // Asegúrate de que la ruta sea correcta
 
     // Consultar tabla de docentes
     $consultaDocente = "SELECT * FROM docente WHERE identificacion = '$usuario' AND contraseña = '$password'";
@@ -17,8 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($resultadoDocente) > 0) {
         // Obtener los datos del docente
         $row = mysqli_fetch_assoc($resultadoDocente);
-        $nombreDocente = $row['identificacion'];
-        // Agrega aquí los otros campos que desees mostrar
+        $nombreUsuario = $row['Nombre']; 
+        $apellidoUsuario = $row['Apellido'];
+        $identificacionUsuario = $row['Identificacion'];
+        $direccionUsuario = $row['Direccion'];
+        $correoUsuario = $row ['Correo'];// Agrega aquí los otros campos que desees mostrar
     } else {
         $error = "Usuario o contraseña incorrectos"; // Asignar el mensaje de error
     }
@@ -108,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="nombre-email">
                         <span class="nombre"><?php echo $nombreUsuario?></span>
                         <span class="email"><?php echo $correoUsuario?></span>
+                        
                     </div>
                     <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                 </div>
@@ -117,32 +122,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 
-<main>
+    <main>
         <h1>Perfil</h1>
         <span class="nav_image">
             <img src="../Imagenes/profile.jpg"logo_img" width="15%" />
-          </span>
-          <center><h1>Colegio Codema IED </h1></center>
+        </span>
+        <center><h1>Colegio Codema IED </h1></center>
         <br>
         <br>
-        <P>Nombres: <?php echo $nombreUsuario?></P>
-        <br>
-        <p>Apellidos: <?php echo $apellidoUsuario?></p> 
-        <br>
-        <p>Numero de documento: <?php echo $documentoUsuario?></p>
-        <br>
-        <p>Direccion: <?php echo $direccionUsuario?></p>
-        <br>
-        <p>Celular: <?php echo $celularUsuario?></p>
-        <br>
-        <p>Genero: <?php echo $generoUsuario?></p>
-        <br>
-        <p>Correo: <?php echo $correoUsuario?></p>
-        </main>
-
+        <p>Nombres: <?php echo isset($nombreUsuario) ? $nombreUsuario : 'No disponible'; ?></p>
+        <p>Apellidos: <?php echo isset($apellidoUsuario) ? $apellidoUsuario : 'No disponible'; ?></p> 
+        <p>Identificación: <?php echo isset($identificacionUsuario) ? $identificacionUsuario : 'No disponible'; ?></p>
+        <p>Dirección: <?php echo isset($direccionUsuario) ? $direccionUsuario : 'No disponible'; ?></p>
+        <p>Correo electrónico: <?php echo isset($correoUsuario) ? $correoUsuario : 'No disponible'; ?></p>
+        <!-- Agrega aquí más campos de información si es necesario -->
+    </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/script.js"></script>
-</body>
 </html>
