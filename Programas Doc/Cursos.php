@@ -12,7 +12,7 @@
     }
 
     // Consulta SQL para obtener los datos de las asignaturas
-    $sql = "SELECT id_materia, Nombre_materia, id_asignatura FROM materia";
+    $sql = "SELECT id_curso, nombre_curso, id_grado FROM curso";
     $result = $conn->query($sql);
 ?>
 
@@ -62,7 +62,6 @@
                         <span>Asistencias</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="cursos.php">
                         <ion-icon name="document-text-outline"></ion-icon>
@@ -103,9 +102,9 @@
     </div>
 
     <main>
-    <h1>Asignaturas</h1>
+    <h1>Cursos</h1>
     <div class="top-buttons">
-        <a href="agregar_materia.php"><button class="add-button">Agregar Materia</button></a>
+        <a href="agregar_curso.php"><button class="add-button">Agregar Curso</button></a>
         <a href="logout.php"><button id="logout-btn" class="logout-button">Cerrar sesión</button></a>
     </div>
     
@@ -113,7 +112,7 @@
     <table id="example" class="ui celled table" style="width:100%">
         <thead>
             <tr>
-                <th>Materia</th>
+                <th>Curso</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -122,13 +121,13 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>".$row["Nombre_materia"]."</td>";
+                    echo "<td>".$row["nombre_curso"]."</td>";
 
                     // Botones de acciones uno al lado del otro en la misma celda
                     echo "<td class='action-buttons'>";
-                    echo "<a href='editar_materia.php?id=".$row["id_materia"]."'><button class='edit-button'>Editar</button></a>";
-                    echo "<form action='eliminar_materia.php' method='post'>";
-                    echo "<input type='hidden' name='id_materia' value='".$row["id_materia"]."'>";
+                    echo "<a href='editar_curso.php?id=".$row["id_curso"]."'><button class='edit-button'>Editar</button></a>";
+                    echo "<form action='eliminar_curso.php' method='post'>";
+                    echo "<input type='hidden' name='id_curso' value='".$row["id_curso"]."'>";
                     echo "<button type='submit' class='delete-button'>Eliminar</button>";
                     echo "</form>";
                     echo "</td>";

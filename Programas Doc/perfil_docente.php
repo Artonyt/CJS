@@ -54,11 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </a>  
     </div>
 
-        <nav class="navegacion">
+    <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="inbox" href="perfil_docente.php">
-                        <ion-icon name="mail-unread-outline"></ion-icon>
+                    <a href="perfil_docente.php">
+                    <ion-icon name="person-outline"></ion-icon>
                         <span>Perfil</span>
                     </a>
                 </li>
@@ -74,21 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span>Asistencias</span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="Notas.php">
-                        <ion-icon name="document-text-outline"></ion-icon>
-                        <span>Notas</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="Notas.php">
+                    <a href="cursos.php">
                         <ion-icon name="document-text-outline"></ion-icon>
                         <span>Cursos</span>
                     </a>
                 </li>
             </ul>
         </nav>
-
         <div>
             <div class="linea"></div>
 
