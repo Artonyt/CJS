@@ -62,6 +62,12 @@ body {
     justify-content: flex-end; /* Alinea los botones en la parte superior derecha */
     margin-bottom: 20px; /* Agrega un espacio entre los botones y la tabla */
 }
+/* Estilo para los botones de acciones en la misma celda */
+.action-buttons {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    align-items: center;
+}
 
 /* Estilos para el botón "Cerrar Sesión" */
 .logout-button {
@@ -96,27 +102,36 @@ body {
     background-color: #c2c3c7;
 }
 
-/* Estilos para los botones de acciones "Editar" y "Eliminar" */
-.button-container {
-    display: flex;
-    gap: 10px; /* Espacio entre los botones */
-}
-
-.edit-button,
-.delete-button {
+/* Estilos para los botones de "Editar" */
+.edit-button {
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
-    background-color: #a200ff;
+    background-color: #00ff00; /* Color verde */
     color: white;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.edit-button:hover,
+.edit-button:hover {
+    background-color: #c2c3c7; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos para los botones de "Eliminar" */
+.delete-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff0000; /* Color rojo */
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 .delete-button:hover {
-    background-color: #c2c3c7;
+    background-color: #c2c3c7; /* Cambio de color al pasar el mouse */
 }
 
 

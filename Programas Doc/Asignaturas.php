@@ -106,45 +106,44 @@
     <h1>Asignaturas</h1>
     <div class="top-buttons">
         <a href="agregar_materia.php"><button class="add-button">Agregar Materia</button></a>
-        <a href="logout.php"><button id="logout-btn" class="logout-button">Cerrar sesión</button>
+        <a href="logout.php"><button id="logout-btn" class="logout-button">Cerrar sesión</button></a>
     </div>
     
     <div class="container">
-        <table id="example" class="ui celled table" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Materia</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>".$row["Nombre_materia"]."</td>";
+    <table id="example" class="ui celled table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>".$row["Nombre_materia"]."</td>";
 
-                        // Botones de acciones uno al lado del otro en la misma celda
-                        echo "<td>";
-                        echo "<div class='button-container'>";
-                        echo "<a href='editar_materia.php?id=".$row["id_materia"]."'><button class='edit-button'>Editar</button></a>";
-                        echo "<form action='eliminar_materia.php' method='post'>";
-                        echo "<input type='hidden' name='id_materia' value='".$row["id_materia"]."'>";
-                        echo "<button type='submit' class='delete-button'>Eliminar</button>";
-                        echo "</form>";
-                        echo "</div>";
-                        echo "</td>";
+                    // Botones de acciones uno al lado del otro en la misma celda
+                    echo "<td class='action-buttons'>";
+                    echo "<a href='editar_materia.php?id=".$row["id_materia"]."'><button class='edit-button'>Editar</button></a>";
+                    echo "<form action='eliminar_materia.php' method='post'>";
+                    echo "<input type='hidden' name='id_materia' value='".$row["id_materia"]."'>";
+                    echo "<button type='submit' class='delete-button'>Eliminar</button>";
+                    echo "</form>";
+                    echo "</td>";
 
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='2'>No se encontraron materias.</td></tr>";
+                    echo "</tr>";
                 }
-                $conn->close();
-                ?>
-            </tbody>
-        </table>
-    </div>
+            } else {
+                echo "<tr><td colspan='2'>No se encontraron materias.</td></tr>";
+            }
+            $conn->close();
+            ?>
+        </tbody>
+    </table>
+</div>
+
 </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

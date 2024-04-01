@@ -78,7 +78,7 @@ body {
     border: none;
     outline: none;
     height: 40px;
-    background: #eeff00;
+    background: #ff0000;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
@@ -87,7 +87,7 @@ body {
 
 /* Estilos para el botón de enviar al pasar el ratón */
 .login-box input[type="submit"]:hover {
-    background: #ff0040;
+    background: #d40cc4;
     color: #000;
 }
 
