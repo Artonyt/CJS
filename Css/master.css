@@ -23,7 +23,7 @@ body {
     width: 90%; /* Cambio el ancho del formulario para que sea responsive */
     max-width: 320px; /* Establezco un ancho máximo para mantener el diseño en dispositivos grandes */
     height: 550px;
-    background: #9900ff;
+    background: #ae00ff;
     color: #fff;
     top: 50%;
     left: 50%;
@@ -78,7 +78,7 @@ body {
     border: none;
     outline: none;
     height: 40px;
-    background: #b80f22;
+    background: #eeff00;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
@@ -87,7 +87,7 @@ body {
 
 /* Estilos para el botón de enviar al pasar el ratón */
 .login-box input[type="submit"]:hover {
-    background: #00ff22;
+    background: #ff0040;
     color: #000;
 }
 

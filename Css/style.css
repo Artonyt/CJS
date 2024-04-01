@@ -53,7 +53,6 @@ body {
     padding: 0;
     background-image: url('../Imagenes/fondo.jpg'); /* Ruta de la imagen de fondo */
     background-size: cover; /* La imagen cubrirá todo el fondo */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
     font-family: 'Outfit', sans-serif; /* Cambié la fuente del cuerpo */
     height: 100vh;
 }
@@ -342,9 +341,9 @@ main.min-main{
   }
   
   table {
-    background-color: white;
+    background-color: rgb(218, 212, 212);
     width: 100%;
-    height: 100%;
+    height: 80%;
     color: black;
     font-size: 20px;
     table-layout: fixed;
@@ -368,7 +367,7 @@ main.min-main{
   }
   
   td {
-    padding: 15px;
+    padding: 8px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.342);
     
   

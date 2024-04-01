@@ -23,6 +23,8 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CJS</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../imagenes/favicon.ico" type="image/vnd.microsoft.icon">
+
 </head>
 <body>
     <div class="menu">
@@ -114,25 +116,33 @@ $result = $conn->query($sql);
                 <thead>
                     <tr>
                         <th>Materia</th>
-                        <th>Acción</th>
+                        <th>Acciónes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    if ($result->num_rows > 0) {
-                        // Iterar sobre los resultados y generar las filas de la tabla
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>".$row["Nombre_materia"]."</td>";
-                            echo "<td><a href='editar_materia.php?id=".$row["id_materia"]."'>Editar</a></td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='4'>No se encontraron materias.</td></tr>";
-                    }
-                    $conn->close();
-                    ?>
-                </tbody>
+    <?php
+    if ($result->num_rows > 0) {
+        // Iterar sobre los resultados y generar las filas de la tabla
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>".$row["Nombre_materia"]."</td>"; // Celda para el nombre de la materia
+            echo "<td>";
+            // Botón de editar
+            echo "<a href='editar_materia.php?id=".$row["id_materia"]."'><button>Editar</button></a>";
+            // Botón de eliminar
+            echo "<form action='eliminar_materia.php' method='post'>";
+            echo "<input type='hidden' name='id_materia' value='".$row["id_materia"]."'>";
+            echo "<button type='submit'>Eliminar</button>";
+            echo "</form>";
+            echo "</td>";
+            echo "</tr>";
+        }
+    } else {
+        echo "<tr><td colspan='2'>No se encontraron materias.</td></tr>"; // Colspan 2 para ocupar las dos columnas
+    }
+    ?>
+</tbody>
+
             </table>
         </div>
     </main>
