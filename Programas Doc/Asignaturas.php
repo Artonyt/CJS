@@ -1,3 +1,21 @@
+<?php
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "Colegio";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
+
+// Consulta SQL para obtener los datos de las asignaturas
+$sql = "SELECT id_materia,Nombre_materia,id_asignatura FROM materia";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +34,6 @@
         <div>
             <div class="nombre-pagina">
                 <img src="../Imagenes/logo (2).png" alt="" width="30%">
-                <a href="perfil_docente.php"></a>
                 <span>CJS</span>
             </div>
         </div>
@@ -88,103 +105,37 @@
     </div>
 
 
-<main>
-
-<button id="logout-btn">Cerrar sesión</button>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="../js/script.js"></script>
-    
-<h1>Asignaturas</h1>
+    <main>
+        <button id="logout-btn">Cerrar sesión</button>
+        <h1>Asignaturas</h1>
         
-<div class="container">
-    <table id="example" class="ui celled table" style="width:103%">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Area</th>
-                <th>Docente</th>
-                <th>Accion</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-               
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-             
-            </tr>
-            <tr>
-                <td>Herrod Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-            
-            </tr>
-            <tr>
-                <td>Rhona Davidson</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-               
-            </tr>
-            <tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                
-            </tr>
-            <tr>
-                <td>Sonya Frost</td>
-                <td>Software Engineer</td>
-                <td>Edinburgh</td>
-                <td>23</td>
-                
-            </tr>
-           
-            
-            
-    </table>
-</div>
-</main>
+        <div class="container">
+            <table id="example" class="ui celled table" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Materia</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        // Iterar sobre los resultados y generar las filas de la tabla
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>".$row["Nombre_materia"]."</td>";
+                            echo "<td><a href='editar_materia.php?id=".$row["id_materia"]."'>Editar</a></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No se encontraron materias.</td></tr>";
+                    }
+                    $conn->close();
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
 
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
