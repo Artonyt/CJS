@@ -31,12 +31,21 @@ $result = $conn->query($sql);
     </div>
 
     <div class="barra-lateral">
+<<<<<<< HEAD
         <div>
             <div class="nombre-pagina">
                 <img src="../Imagenes/logo (2).png" alt="" width="30%">
                 <span>CJS</span>
             </div>
+=======
+    <div>
+        <a href="perfil_docente.php">
+        <div class="nombre-pagina">
+            <img src="../Imagenes/logo (2).png" alt="" width="40%">
+>>>>>>> 935181de947c6fe67a0e420e31ca675f08e984a9
         </div>
+        </a>  
+    </div>
 
         <nav class="navegacion">
             <ul>
