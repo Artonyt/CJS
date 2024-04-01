@@ -31,7 +31,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CJS</title>
+    <title>NOTAS</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -42,11 +42,11 @@
 
     <div class="barra-lateral">
         <div>
-            <div class="nombre-pagina">
-                <img src="../Imagenes/logo (2).png" alt="" width="30%">
-                <a href="perfil_docente.php"></a>
-                <span>CJS</span>
-            </div>
+        <a href="perfil_docente.php">
+        <div class="nombre-pagina">
+                <img src="../Imagenes/logo (2).png" alt="" width="40%">
+        </div>
+        </a>  
         </div>
 
         <nav class="navegacion">
@@ -237,7 +237,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>Final</th>
+                
             </tr>
         </tfoot>
     </table>
