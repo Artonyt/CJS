@@ -114,12 +114,62 @@
                     <tr>
                         <td>01</td>
                         <td>Mendez</td>
-                        <td>Julian</td>
+                        <td>santiago</td>
       
                         <td><select name="" id="">
                           <option value="">ASISTE</option>
                           <option value="">FALLA</option>
                           <option value="">F. JUSTIFICADA</option>
+                          <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Asistencias con Excusa</title>
+    <style>
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registro de Asistencias con Excusa</h2>
+    <form id="registro-asistencia">
+        <label for="nombre">Nombre del Estudiante:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label><input type="radio" name="asistencia" value="asistio"> Asistió</label>
+        <label><input type="radio" name="asistencia" value="no-asistio"> No Asistió</label>
+        <label><input type="radio" name="asistencia" value="excusa"> Excusa</label><br><br>
+
+        <label for="excusa-archivo">Subir archivo de excusa (docx):</label>
+        <input type="file" id="excusa-archivo" name="excusa-archivo" accept=".docx"><br><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById("registro-asistencia").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var nombre = document.getElementById("nombre").value;
+            var seleccion = document.querySelector('input[name="asistencia"]:checked');
+            var excusaArchivo = document.getElementById("excusa-archivo").files[0];
+            if (nombre && seleccion) {
+                var resultadoDiv = document.getElementById("resultado");
+                var mensaje = "Se ha registrado la asistencia de " + nombre + ": " + seleccion.value;
+                if (seleccion.value === "excusa" && excusaArchivo) {
+                    mensaje += " con archivo de excusa: " + excusaArchivo.name;
+                }
+                resultadoDiv.textContent = mensaje;
+            } else {
+                alert("Por favor ingrese el nombre del estudiante y seleccione una opción de asistencia.");
+            }
+        });
+    </script>
+</body>
+</html>
+
                         </select></td>
                         
                     </tr>

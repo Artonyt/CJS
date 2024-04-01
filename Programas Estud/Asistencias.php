@@ -98,6 +98,7 @@
                 <thead>
                   <tr id="fechas">
                     <td colspan="3">FECHA:</td>
+                    
       
                     <td><input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="today" /></td>
                     
@@ -108,13 +109,14 @@
                         <th>NOMBRES</th>
                         <th>ASISTENCIA</th>
                         
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>01</td>
                         <td>Mendez</td>
-                        <td>Julian</td>
+                        <td>santiago</td>
       
                         <td><select name="" id="">
                           <option value="">ASISTE</option>
@@ -144,6 +146,7 @@
                           <option value="">ASISTE</option>
                           <option value="">FALLA</option>
                           <option value="">F. JUSTIFICADA</option>
+                          
                         
                     </tr>
                     <tr>
@@ -166,6 +169,7 @@
                         <td><select name="" id="">
                           <option value="">ASISTE</option>
                           <option value="">FALLA</option>
+                          
                           <option value="">F. JUSTIFICADA</option>
                         </select></td>
                         
