@@ -68,8 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span>Asignaturas</span>
                     </a>
                 </li>
-
-
                 <li>
                     <a href="cursos.php">
                         <ion-icon name="document-text-outline"></ion-icon>

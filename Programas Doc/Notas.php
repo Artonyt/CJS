@@ -124,6 +124,7 @@
                 <th>ID Curso</th>
                 <th>Apellidos</th>
                 <th>Nombres</th>
+                <th>Valor Notas</th>                
             </tr>
         </thead>
         <tbody>
