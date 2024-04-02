@@ -458,4 +458,25 @@ main.min-main{
   }
   
 
+/* Estilo para la lista desordenada */
+.mi-lista {
+    list-style-type: none; /* Elimina los marcadores de lista predeterminados */
+    padding: 0; /* Elimina el relleno predeterminado */
+    display: flex; /* Alinea los elementos de manera horizontal */
+}
+
+/* Estilo para los elementos de la lista */
+.mi-lista li {
+    padding: 20px; /* Agrega un relleno alrededor de cada elemento */
+    background-color: #f2f2f2; /* Color de fondo */
+    border-bottom: 1px solid #ccc; /* Línea divisoria entre elementos */
+    flex: 1; /* Hace que cada elemento ocupe el mismo espacio */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin: 0 10px; /* Agrega espacio horizontal entre los elementos */
+}
+
+/* Estilo para el último elemento de la lista */
+.mi-lista li:last-child {
+    border-bottom: none; /* Elimina la línea divisoria en el último elemento */
+}
 

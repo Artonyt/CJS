@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2024 a las 20:35:01
+-- Tiempo de generación: 02-04-2024 a las 05:37:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -57,18 +57,34 @@ CREATE TABLE `asistencia` (
 --
 
 CREATE TABLE `curso` (
-  `ID_curso` int(11) NOT NULL,
-  `Nombre_curso` varchar(100) DEFAULT NULL,
-  `ID_grado` int(11) DEFAULT NULL
+  `id_curso` int(11) NOT NULL,
+  `nombre_curso` varchar(10) DEFAULT NULL,
+  `id_grado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `curso`
 --
 
-INSERT INTO `curso` (`ID_curso`, `Nombre_curso`, `ID_grado`) VALUES
+INSERT INTO `curso` (`id_curso`, `nombre_curso`, `id_grado`) VALUES
+(601, '601', 6),
+(602, '602', 6),
+(603, '603', 6),
+(701, '701', 7),
+(702, '702', 7),
+(703, '703', 7),
+(801, '801', 8),
+(802, '802', 8),
+(803, '803', 8),
 (901, '901', 9),
-(902, '902', 9);
+(902, '902', 9),
+(903, '903', 9),
+(1001, '1001', 10),
+(1002, '1002', 10),
+(1003, '1003', 10),
+(1101, '1101', 11),
+(1102, '1102', 11),
+(1103, '1103', 11);
 
 -- --------------------------------------------------------
 
@@ -94,7 +110,13 @@ CREATE TABLE `docente` (
 
 INSERT INTO `docente` (`ID_profesor`, `Nombre`, `Apellido`, `Identificacion`, `Direccion`, `Celular`, `Correo_electrónico`, `Contraseña`, `ID_rol`) VALUES
 (1, 'Fernando', 'Ortiz', 1000678165, 'cra 58 # 34 56 su', '300331452', 'kaka@gmail.com', 'Ditunombre1', 1),
-(2, 'pepe', 'fernandez', 100031209, 'cra 745 b 48953 suir', '3003371492', 'dasdadadapdaksojfduakj@gmail.com', 'Ditunombre1', 1);
+(2, 'Pedirto', 'Zambrano', 1298301283, 'cra 27 # 36 sur ', '3003371222', 'elpedrito@gmail.com', 'Ditunombre1', 1),
+(3, 'pepe', 'fernandez', 100031209, 'cra 745 b 48953 suir', '3003371492', 'dasdadadapdaksojfduakj@gmail.com', 'Ditunombre1', 1),
+(4, 'Laura', 'González', 215478963, 'Calle 10 #20-30', '3101234567', 'laura@example.com', 'clave123', 1),
+(5, 'Carlos', 'Martínez', 365214789, 'Avenida 5 #15-25', '3209876543', 'carlos@example.com', 'contraseña456', 1),
+(6, 'Ana', 'López', 789654123, 'Carrera 30 #40-50', '3005554444', 'ana@example.com', 'clave789', 1),
+(7, 'Pedro', 'Ramírez', 456789321, 'Calle 15 #25-35', '3158889999', 'pedro@example.com', 'password123', 1),
+(8, 'María', 'Hernández', 987654321, 'Avenida 20 #30-40', '3507778888', 'maria@example.com', 'contraseña789', 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +126,8 @@ INSERT INTO `docente` (`ID_profesor`, `Nombre`, `Apellido`, `Identificacion`, `D
 
 CREATE TABLE `estudiante` (
   `ID_estudiante` int(11) NOT NULL,
-  `Nombre` varchar(100) DEFAULT NULL,
+  `Nombres` varchar(100) NOT NULL,
+  `Apellidos` varchar(100) NOT NULL,
   `identificacion` int(11) NOT NULL,
   `Contraseña` varchar(20) NOT NULL,
   `Fecha_nacimiento` date DEFAULT NULL,
@@ -112,7 +135,7 @@ CREATE TABLE `estudiante` (
   `Dirección` varchar(200) DEFAULT NULL,
   `Teléfono` varchar(20) DEFAULT NULL,
   `Correo_electrónico` varchar(100) DEFAULT NULL,
-  `ID_curso` int(11) DEFAULT NULL,
+  `id_curso` int(11) NOT NULL,
   `ID_grado` int(11) DEFAULT NULL,
   `ID_rol` int(11) DEFAULT NULL,
   `Fecha_ingreso` date DEFAULT NULL
@@ -122,8 +145,14 @@ CREATE TABLE `estudiante` (
 -- Volcado de datos para la tabla `estudiante`
 --
 
-INSERT INTO `estudiante` (`ID_estudiante`, `Nombre`, `identificacion`, `Contraseña`, `Fecha_nacimiento`, `Género`, `Dirección`, `Teléfono`, `Correo_electrónico`, `ID_curso`, `ID_grado`, `ID_rol`, `Fecha_ingreso`) VALUES
-(1, 'Carlos', 1000687143, 'Ditunombre1', '2003-03-05', 'M', 'cra 7 53 56 sur', '3003376153', 'kakada23@gmail.com', 902, 9, 2, '2020-03-23');
+INSERT INTO `estudiante` (`ID_estudiante`, `Nombres`, `Apellidos`, `identificacion`, `Contraseña`, `Fecha_nacimiento`, `Género`, `Dirección`, `Teléfono`, `Correo_electrónico`, `id_curso`, `ID_grado`, `ID_rol`, `Fecha_ingreso`) VALUES
+(1, 'Juan', 'Perez', 100123456, 'contraseña123', '2005-05-10', 'Masculino', 'Calle 123', '1234567890', 'juan@example.com', 701, 7, 1, '2023-01-15'),
+(2, 'María', 'Lopez', 100234567, 'clave456', '2006-03-15', 'Femenino', 'Avenida 456', '9876543210', 'maria@example.com', 801, 8, 1, '2023-02-20'),
+(3, 'Pedro', 'Patiño', 100345678, 'password789', '2007-07-20', 'Masculino', 'Carrera 789', '5678901234', 'pedro@example.com', 1001, 10, 1, '2023-03-25'),
+(4, 'Valentina', 'Arroyo', 1011083556, 'Ditunombre1', '0000-00-00', 'F', 'FFFGFG', '2389374', 'DSDDFSF', 601, 6, 2, '0000-00-00'),
+(6, 'Jose', 'Fuentes', 12323343, 'Ditunombre1', '2012-10-23', 'M', 'dfgsdgdfgfg', '345656456', 'fdgfgf@gmail.com', 602, 6, 2, '2012-12-23'),
+(7, 'Jose', 'Fuentes', 12323343, 'Ditunombre1', '2012-10-23', 'M', 'dfgsdgdfgfg', '345656456', 'fdgfgf@gmail.com', 602, 6, 2, '2012-12-23'),
+(8, 'Valentina', 'Arroyo', 1011083556, 'Ditunombre1', '0000-00-00', 'F', 'FFFGFG', '2389374', 'DSDDFSF', 601, 6, 2, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -170,12 +199,12 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`ID_materia`, `Nombre_materia`, `id_asignatura`) VALUES
-(0, 'Religion', 0),
+(1, 'Religion', 0),
+(2, 'Ingles', 1),
 (3, 'Español', 0),
 (4, 'Educacion Fisica', 0),
 (5, 'Informatica', 0),
 (6, 'Artes', 0),
-(7, 'Ingles', 0),
 (8, 'Matematicas', 0),
 (9, 'Ciencias', 0),
 (10, 'Sociales', 0),
@@ -209,6 +238,17 @@ CREATE TABLE `nota` (
   `Periodo` varchar(50) DEFAULT NULL,
   `Fecha_registro` date DEFAULT NULL,
   `Observaciones` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `relacion_curso_materia`
+--
+
+CREATE TABLE `relacion_curso_materia` (
+  `id_curso` int(11) NOT NULL,
+  `ID_materia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -252,8 +292,8 @@ ALTER TABLE `asistencia`
 -- Indices de la tabla `curso`
 --
 ALTER TABLE `curso`
-  ADD PRIMARY KEY (`ID_curso`),
-  ADD KEY `fk_curso_grado` (`ID_grado`);
+  ADD PRIMARY KEY (`id_curso`),
+  ADD KEY `id_grado` (`id_grado`);
 
 --
 -- Indices de la tabla `docente`
@@ -267,9 +307,9 @@ ALTER TABLE `docente`
 --
 ALTER TABLE `estudiante`
   ADD PRIMARY KEY (`ID_estudiante`),
-  ADD KEY `ID_curso` (`ID_curso`),
   ADD KEY `ID_grado` (`ID_grado`),
-  ADD KEY `ID_rol` (`ID_rol`);
+  ADD KEY `ID_rol` (`ID_rol`),
+  ADD KEY `id_curso` (`id_curso`);
 
 --
 -- Indices de la tabla `grado`
@@ -293,10 +333,45 @@ ALTER TABLE `nota`
   ADD KEY `ID_asignatura` (`ID_asignatura`);
 
 --
+-- Indices de la tabla `relacion_curso_materia`
+--
+ALTER TABLE `relacion_curso_materia`
+  ADD PRIMARY KEY (`id_curso`,`ID_materia`),
+  ADD KEY `ID_materia` (`ID_materia`);
+
+--
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`ID_rol`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `curso`
+--
+ALTER TABLE `curso`
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6024;
+
+--
+-- AUTO_INCREMENT de la tabla `docente`
+--
+ALTER TABLE `docente`
+  MODIFY `ID_profesor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `estudiante`
+--
+ALTER TABLE `estudiante`
+  MODIFY `ID_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT de la tabla `materia`
+--
+ALTER TABLE `materia`
+  MODIFY `ID_materia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas
@@ -319,7 +394,7 @@ ALTER TABLE `asistencia`
 -- Filtros para la tabla `curso`
 --
 ALTER TABLE `curso`
-  ADD CONSTRAINT `fk_curso_grado` FOREIGN KEY (`ID_grado`) REFERENCES `grado` (`ID_grado`);
+  ADD CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`id_grado`) REFERENCES `grado` (`ID_grado`);
 
 --
 -- Filtros para la tabla `docente`
@@ -331,9 +406,9 @@ ALTER TABLE `docente`
 -- Filtros para la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  ADD CONSTRAINT `estudiante_ibfk_1` FOREIGN KEY (`ID_curso`) REFERENCES `curso` (`ID_curso`),
   ADD CONSTRAINT `estudiante_ibfk_2` FOREIGN KEY (`ID_grado`) REFERENCES `grado` (`ID_grado`),
-  ADD CONSTRAINT `estudiante_ibfk_3` FOREIGN KEY (`ID_rol`) REFERENCES `rol` (`ID_rol`);
+  ADD CONSTRAINT `estudiante_ibfk_3` FOREIGN KEY (`ID_rol`) REFERENCES `rol` (`ID_rol`),
+  ADD CONSTRAINT `estudiante_ibfk_4` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
 
 --
 -- Filtros para la tabla `nota`
@@ -341,6 +416,13 @@ ALTER TABLE `estudiante`
 ALTER TABLE `nota`
   ADD CONSTRAINT `nota_ibfk_1` FOREIGN KEY (`ID_estudiante`) REFERENCES `estudiante` (`ID_estudiante`),
   ADD CONSTRAINT `nota_ibfk_2` FOREIGN KEY (`ID_asignatura`) REFERENCES `asignatura` (`ID_asignatura`);
+
+--
+-- Filtros para la tabla `relacion_curso_materia`
+--
+ALTER TABLE `relacion_curso_materia`
+  ADD CONSTRAINT `relacion_curso_materia_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`),
+  ADD CONSTRAINT `relacion_curso_materia_ibfk_2` FOREIGN KEY (`ID_materia`) REFERENCES `materia` (`ID_materia`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -56,12 +56,7 @@
                         <span>Asignaturas</span>
                     </a>
                 </li>
-                <li>
-                    <a href="Asistencias.php">
-                        <ion-icon name="paper-plane-outline"></ion-icon>
-                        <span>Asistencias</span>
-                    </a>
-                </li>
+
 
                 <li>
                     <a href="cursos.php">

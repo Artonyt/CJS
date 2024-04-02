@@ -56,12 +56,7 @@
                         <span>Asignaturas</span>
                     </a>
                 </li>
-                <li>
-                    <a href="Asistencias.php">
-                        <ion-icon name="paper-plane-outline"></ion-icon>
-                        <span>Asistencias</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="cursos.php">
                         <ion-icon name="document-text-outline"></ion-icon>
@@ -121,7 +116,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>".$row["nombre_curso"]."</td>";
+                    echo "<td><a href='GestionarCurso.php'>".$row["nombre_curso"]."</td>";
 
                     // Botones de acciones uno al lado del otro en la misma celda
                     echo "<td class='action-buttons'>";
