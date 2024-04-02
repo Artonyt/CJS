@@ -23,20 +23,28 @@
         </div>
 
         <nav class="navegacion">
-            <ul>
+        <ul>
                 <li>
                     <a id="inbox" href="perfil_docente.php">
                         <ion-icon name="mail-unread-outline"></ion-icon>
                         <span>Perfil</span>
                     </a>
                 </li>
-                
                 <li>
                     <a href="Asignaturas.php">
                         <ion-icon name="star-outline"></ion-icon>
                         <span>Asignaturas</span>
                     </a>
                 </li>
+                <li>
+                    <a href="Cursos.php">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Cursos</span>
+                    </a>
+                </li>
+                <br>
+                    <h4>Planillas</h4>
+                    <br>
                 <li>
                     <a href="Asistencias.php">
                         <ion-icon name="paper-plane-outline"></ion-icon>
@@ -47,12 +55,6 @@
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
                         <span>Notas</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="Notas.php">
-                        <ion-icon name="document-text-outline"></ion-icon>
-                        <span>Cursos</span>
                     </a>
                 </li>
             </ul>
