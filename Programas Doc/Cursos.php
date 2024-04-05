@@ -1,19 +1,19 @@
 <?php
-    // Conexión a la base de datos
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "Colegio";
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "Colegio";
 
-    $conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password, $database);
 
-    if ($conn->connect_error) {
-        die("Error de conexión: " . $conn->connect_error);
-    }
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
 
-    // Consulta SQL para obtener los datos de las asignaturas
-    $sql = "SELECT id_curso, nombre_curso, id_grado FROM curso";
-    $result = $conn->query($sql);
+// Consulta SQL para obtener los datos de los cursos
+$sql = "SELECT id_curso, nombre_curso, id_grado FROM curso";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +116,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td><a href='GestionarCurso.php'>".$row["nombre_curso"]."</td>";
+                    echo "<td><a href='GestionarCurso.php?id_curso=".$row["id_curso"]."'>".$row["nombre_curso"]."</a></td>";
 
                     // Botones de acciones uno al lado del otro en la misma celda
                     echo "<td class='action-buttons'>";

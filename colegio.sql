@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2024 a las 05:37:45
+-- Tiempo de generación: 02-04-2024 a las 22:50:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -191,6 +191,7 @@ INSERT INTO `grado` (`ID_grado`, `Nombre_grado`) VALUES
 CREATE TABLE `materia` (
   `ID_materia` int(11) NOT NULL,
   `Nombre_materia` varchar(100) DEFAULT NULL,
+  `docente_asignado` varchar(100) NOT NULL,
   `id_asignatura` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -198,31 +199,31 @@ CREATE TABLE `materia` (
 -- Volcado de datos para la tabla `materia`
 --
 
-INSERT INTO `materia` (`ID_materia`, `Nombre_materia`, `id_asignatura`) VALUES
-(1, 'Religion', 0),
-(2, 'Ingles', 1),
-(3, 'Español', 0),
-(4, 'Educacion Fisica', 0),
-(5, 'Informatica', 0),
-(6, 'Artes', 0),
-(8, 'Matematicas', 0),
-(9, 'Ciencias', 0),
-(10, 'Sociales', 0),
-(11, 'Estadistica', 0),
-(12, 'Geometria', 0),
-(13, 'Quimica', 0),
-(14, 'Fisica', 0),
-(15, 'Democracia', 0),
-(16, 'Geografia', 0),
-(17, 'Historia', 0),
-(18, 'Catedra de la paz', 0),
-(19, 'Trigonometria', 0),
-(20, 'Filosofia', 0),
-(21, 'Politica', 0),
-(22, 'Economia', 0),
-(23, 'Algebra', 0),
-(24, 'Estadistica', 0),
-(25, 'Danzas', 0);
+INSERT INTO `materia` (`ID_materia`, `Nombre_materia`, `docente_asignado`, `id_asignatura`) VALUES
+(1, 'Religion', '', 0),
+(2, 'Ingles', '', 1),
+(3, 'Español', '', 0),
+(4, 'Educacion Fisica', '', 0),
+(5, 'Informatica', '', 0),
+(6, 'Artes', '', 0),
+(8, 'Matematicas', '', 0),
+(9, 'Ciencias', '', 0),
+(10, 'Sociales', '', 0),
+(11, 'Estadistica', '', 0),
+(12, 'Geometria', '', 0),
+(13, 'Quimica', '', 0),
+(14, 'Fisica', '', 0),
+(15, 'Democracia', '', 0),
+(16, 'Geografia', '', 0),
+(17, 'Historia', '', 0),
+(18, 'Catedra de la paz', '', 0),
+(19, 'Trigonometria', '', 0),
+(20, 'Filosofia', '', 0),
+(21, 'Politica', '', 0),
+(22, 'Economia', '', 0),
+(23, 'Algebra', '', 0),
+(24, 'Estadistica', '', 0),
+(25, 'Danzas', '', 0);
 
 -- --------------------------------------------------------
 
@@ -239,6 +240,13 @@ CREATE TABLE `nota` (
   `Fecha_registro` date DEFAULT NULL,
   `Observaciones` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `nota`
+--
+
+INSERT INTO `nota` (`ID_nota`, `ID_estudiante`, `ID_asignatura`, `Valor`, `Periodo`, `Fecha_registro`, `Observaciones`) VALUES
+(1, 6, NULL, 45, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
