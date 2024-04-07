@@ -1,17 +1,32 @@
 <?php
+// Define las credenciales de la base de datos
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$database = 'colegio';
 
-$host="localhost";
-$user="root";
-$password="";
+// Función para establecer la conexión a la base de datos
+function conectar() {
+    global $host, $user, $password, $database;
+    
+    // Intenta establecer la conexión
+    $link = mysqli_connect($host, $user, $password, $database);
+    
+    // Verifica si hubo un error de conexión
+    if (!$link) {
+        // Si hubo un error, muestra un mensaje de error y termina el script
+        die("Error al conectarse al servidor de la base de datos: " . mysqli_connect_error());
+    }
+    
+    // Retorna el enlace a la conexión
+    return $link;
+}
 
-$link = mysqli_connect($host,$user,$password) or die ("Error al conectarse al servidor");
+// Llama a la función para establecer la conexión
+$link = conectar();
 
-$dbname="colegio";
+// Puedes usar $link para realizar consultas a la base de datos
 
-mysqli_select_db($link,$dbname) or die ("Error al conectarse a la Bd");
-
-
-return $link;
-
-
+// Una vez que hayas terminado de usar la conexión, ciérrala
+mysqli_close($link);
 ?>

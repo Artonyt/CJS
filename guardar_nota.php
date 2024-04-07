@@ -1,15 +1,5 @@
 <?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "Colegio";
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+include('conexion.php'); // Asegúrate de colocar el nombre del archivo entre comillas
 
 // Verificar si se han recibido los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
