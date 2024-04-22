@@ -11,15 +11,19 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Consulta SQL para obtener los datos de los estudiantes agrupados por curso
+// Obtener el ID del curso desde la URL
+$id_curso = $_GET['id_curso'];
+
+// Consulta SQL para obtener los estudiantes del curso específico
 $sql_estudiantes_por_curso = "
     SELECT e.ID_estudiante, e.Nombres, e.Apellidos, e.ID_curso, e.ID_grado, n.Valor 
     FROM estudiante e 
     LEFT JOIN nota n ON e.ID_estudiante = n.ID_estudiante
+    WHERE e.ID_curso = $id_curso
 ";
 $result_estudiantes_por_curso = $conn->query($sql_estudiantes_por_curso);
-
-// Array para almacenar los estudiantes agrupados por curso
+ 
+// Array para almacenar estudiantes por curso
 $estudiantes_por_curso = array();
 if ($result_estudiantes_por_curso->num_rows > 0) {
     while ($row = $result_estudiantes_por_curso->fetch_assoc()) {
