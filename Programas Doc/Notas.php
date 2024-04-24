@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Obtener el ID del curso desde la URL
+    // Obtener el ID del curso desde la URL
 $id_curso = $_GET['id_curso'];
 
 // Consulta SQL para obtener los estudiantes del curso específico
@@ -88,12 +88,12 @@ if ($result_estudiantes_por_curso->num_rows > 0) {
                         <span>Asistencias</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
                         <span>Notas</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
 
@@ -116,8 +116,8 @@ if ($result_estudiantes_por_curso->num_rows > 0) {
                 <img src="../Imagenes/profile.jpg" alt="">
                 <div class="info-usuario">
                     <div class="nombre-email">
-                        <span class="nombre"><?php echo $nombreDocente?></span>
-                        <span class="email"><?php echo $correoUsuario?></span>
+                        <span class="nombre"><?php echo $docente["d.Nombre"]?></span>
+                        <span class="email"><?php echo $docente["d.Identificacion"]?></span>
                     </div>
                     <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                 </div>
