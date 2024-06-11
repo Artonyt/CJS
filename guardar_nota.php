@@ -1,48 +1,47 @@
 <?php
-include('conexion.php'); // Asegúrate de colocar el nombre del archivo entre comillas
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "Colegio";
 
-// Verificar si se han recibido los datos del formulario
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $notasActualizadas = json_decode(file_get_contents('php://input'), true);
-    
-    foreach ($notasActualizadas as $nota) {
-        $idEstudiante = $nota['id_estudiante'];
-        $nuevoValor = $nota['nuevo_valor'];
+$conn = new mysqli($servername, $username, $password, $database);
 
-        // Consulta SQL para actualizar el valor de la nota
-        $sql = "UPDATE nota SET Valor='$nuevoValor' WHERE ID_estudiante=$idEstudiante";
+if ($conn->connect_error) {
+    die(json_encode(array("status" => "error", "message" => "Error de conexión: " . $conn->connect_error)));
+}
 
-        if ($conn->query($sql) !== TRUE) {
-            echo json_encode(array("success" => false, "message" => "Error al actualizar la nota: " . $conn->error));
-            exit();
-        }
+// Obtener los datos enviados desde el cliente
+$data = json_decode(file_get_contents('php://input'), true);
+
+if (!$data) {
+    echo json_encode(array("status" => "error", "message" => "No se recibieron datos"));
+    exit;
+}
+
+$response = array();
+
+foreach ($data as $nota) {
+    $id_estudiante = $nota['id_estudiante'];
+    $nuevo_valor = $nota['nuevo_valor'];
+
+    // Verificar si el valor es numérico
+    if (!is_numeric($nuevo_valor)) {
+        $response[] = array("id_estudiante" => $id_estudiante, "status" => "error", "message" => "Valor no es numérico");
+        continue;
     }
 
-    // Ahora creamos nuevas notas para los estudiantes que no tienen una nota registrada
-    foreach ($notasActualizadas as $nota) {
-        $idEstudiante = $nota['id_estudiante'];
+    // Consulta SQL para insertar o actualizar la nota del estudiante
+    $sql = "INSERT INTO nota (ID_estudiante, Valor) VALUES ('$id_estudiante', '$nuevo_valor') ON DUPLICATE KEY UPDATE Valor='$nuevo_valor'";
 
-        // Verificar si el estudiante ya tiene una nota registrada
-        $sqlVerificar = "SELECT * FROM nota WHERE ID_estudiante=$idEstudiante";
-        $resultVerificar = $conn->query($sqlVerificar);
-
-        if ($resultVerificar->num_rows == 0) {
-            // Si el estudiante no tiene una nota registrada, creamos una nueva
-            $sqlCrearNota = "INSERT INTO nota (ID_estudiante, Valor) VALUES ($idEstudiante, 0)";
-
-            if ($conn->query($sqlCrearNota) !== TRUE) {
-                echo json_encode(array("success" => false, "message" => "Error al crear una nueva nota para el estudiante: " . $conn->error));
-                exit();
-            }
-        }
+    if ($conn->query($sql) === TRUE) {
+        $response[] = array("id_estudiante" => $id_estudiante, "status" => "success");
+    } else {
+        $response[] = array("id_estudiante" => $id_estudiante, "status" => "error", "message" => $conn->error);
     }
-
-    // Si se ejecuta hasta aquí, significa que todas las notas se actualizaron correctamente
-    echo json_encode(array("success" => true, "message" => "Cambios guardados correctamente."));
-} else {
-    // Si no se han recibido datos del formulario, devolver un mensaje de error
-    echo json_encode(array("success" => false, "message" => "No se han recibido datos del formulario."));
 }
 
 $conn->close();
+
+echo json_encode($response);
 ?>

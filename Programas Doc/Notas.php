@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-    // Obtener el ID del curso desde la URL
+// Obtener el ID del curso desde la URL
 $id_curso = $_GET['id_curso'];
 
 // Consulta SQL para obtener los estudiantes del curso específico
@@ -22,7 +22,7 @@ $sql_estudiantes_por_curso = "
     WHERE e.ID_curso = $id_curso
 ";
 $result_estudiantes_por_curso = $conn->query($sql_estudiantes_por_curso);
- 
+
 // Array para almacenar estudiantes por curso
 $estudiantes_por_curso = array();
 if ($result_estudiantes_por_curso->num_rows > 0) {
@@ -88,12 +88,12 @@ if ($result_estudiantes_por_curso->num_rows > 0) {
                         <span>Asistencias</span>
                     </a>
                 </li>
-                <!-- <li>
+                <li>
                     <a href="Notas.php">
                         <ion-icon name="document-text-outline"></ion-icon>
                         <span>Notas</span>
                     </a>
-                </li> -->
+                </li>
             </ul>
         </nav>
 
@@ -116,101 +116,96 @@ if ($result_estudiantes_por_curso->num_rows > 0) {
                 <img src="../Imagenes/profile.jpg" alt="">
                 <div class="info-usuario">
                     <div class="nombre-email">
-                        <span class="nombre"><?php echo $docente["d.Nombre"]?></span>
-                        <span class="email"><?php echo $docente["d.Identificacion"]?></span>
+                        <span class="nombre"><?php echo $nombreDocente ?></span>
+                        <span class="email"><?php echo $correoUsuario ?></span>
                     </div>
                     <ion-icon name="ellipsis-vertical-outline"></ion-icon>
                 </div>
             </div>
         </div>
-
     </div>
 
     <main>
-    <h1>Notas</h1>
-    
-    <div class="container">
-        <table id="example" class="ui celled table" style="width:100%">
-            <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>ID estudiante</th>
-                    <th>Apellidos</th>
-                    <th>Nombres</th>
-                    <th>Valor Notas</th>                
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $contador = 1;
-                // Recorrer los resultados de los cursos
-                foreach ($estudiantes_por_curso as $curso => $estudiantes) {
-                    foreach ($estudiantes as $estudiante) {
-                        echo "<tr>";
-                        echo "<td>".$contador."</td>";
-                        echo "<td>".$estudiante["ID_estudiante"]."</td>";
-                        echo "<td>".$estudiante["Apellidos"]."</td>";
-                        echo "<td>".$estudiante["Nombres"]."</td>";
-                        
-                        // Mostrar el valor de la nota si está disponible, de lo contrario, dejar la celda vacía
-                        if (isset($estudiante["Valor"])) {
-                            echo "<td contenteditable='true' onBlur='guardarNota(this)' data-id-estudiante='".$estudiante["ID_estudiante"]."'>".$estudiante["Valor"]."</td>";
-                        } else {
-                            echo "<td contenteditable='true' onBlur='guardarNota(this)' data-id-estudiante='".$estudiante["ID_estudiante"]."'></td>";
+        <h1>Notas</h1>
+        <div class="container">
+            <table id="example" class="ui celled table" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>ID estudiante</th>
+                        <th>Apellidos</th>
+                        <th>Nombres</th>
+                        <th>Valor Notas</th>                
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $contador = 1;
+                    foreach ($estudiantes_por_curso as $curso => $estudiantes) {
+                        foreach ($estudiantes as $estudiante) {
+                            echo "<tr>";
+                            echo "<td>".$contador."</td>";
+                            echo "<td>".$estudiante["ID_estudiante"]."</td>";
+                            echo "<td>".$estudiante["Apellidos"]."</td>";
+                            echo "<td>".$estudiante["Nombres"]."</td>";
+                            
+                            if (isset($estudiante["Valor"])) {
+                                echo "<td contenteditable='true' data-id-estudiante='".$estudiante["ID_estudiante"]."'>".$estudiante["Valor"]."</td>";
+                            } else {
+                                echo "<td contenteditable='true' data-id-estudiante='".$estudiante["ID_estudiante"]."'></td>";
+                            }
+                            
+                            echo "</tr>";
+                            $contador++;
                         }
-                        
-                        echo "</tr>";
-                        $contador++;
                     }
-                }
-                
-                // Si el contador no se incrementó, significa que no se encontraron estudiantes
-                if ($contador == 1) {
-                    echo "<tr><td colspan='5'>No se encontraron estudiantes.</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-    <button onclick="guardarCambios()">Guardar Cambios</button>
-</main>
-
+                    
+                    if ($contador == 1) {
+                        echo "<tr><td colspan='5'>No se encontraron estudiantes.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <button onclick="guardarCambios()">Guardar Cambios</button>
+    </main>
+    
 
     <script>
-function guardarCambios() {
-    var notasActualizadas = [];
+    function guardarCambios() {
+        var notasActualizadas = [];
 
-    // Obtener todas las celdas editables de la columna "Valor Notas"
-    var celdasNotas = document.querySelectorAll('td[contenteditable="true"]');
-    
-    // Recorrer cada celda y almacenar los datos en un array
-    celdasNotas.forEach(function(celda) {
-        var idEstudiante = celda.getAttribute("data-id-estudiante");
-        var nuevoValor = celda.innerText;
+        // Obtener todas las celdas editables de la columna "Valor Notas"
+        var celdasNotas = document.querySelectorAll('td[contenteditable="true"]');
+        
+        // Recorrer cada celda y almacenar los datos en un array
+        celdasNotas.forEach(function(celda) {
+            var idEstudiante = celda.getAttribute("data-id-estudiante");
+            var nuevoValor = celda.innerText.trim(); // Usar .trim() para eliminar espacios en blanco innecesarios
 
-        // Agregar los datos al array de notas actualizadas
-        notasActualizadas.push({ id_estudiante: idEstudiante, nuevo_valor: nuevoValor });
-    });
+            // Agregar los datos al array de notas actualizadas
+            notasActualizadas.push({ id_estudiante: idEstudiante, nuevo_valor: nuevoValor });
+        });
 
-    // Enviar las notas actualizadas al servidor utilizando una solicitud AJAX
-    fetch('guardar_nota.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(notasActualizadas),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Respuesta del servidor:', data);
-        alert('Cambios guardados correctamente.');
-    })
-    .catch((error) => {
-        console.error('Error al enviar la solicitud:', error);
-        alert('Error al guardar los cambios.');
-    });
-}
-</script>
+        // Enviar las notas actualizadas al servidor utilizando una solicitud AJAX
+        fetch('guardar_nota.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(notasActualizadas),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Respuesta del servidor:', data);
+            alert('Cambios guardados correctamente.');
+        })
+        .catch((error) => {
+            console.error('Error al enviar la solicitud:', error);
+            alert('Error al guardar los cambios.');
+        });
+    }
+    </script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
